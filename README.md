@@ -5,6 +5,14 @@
 # Overall Architecture Diagram of the Cloud Deployment
 ![image](https://github.com/luke510909/Starbucks/assets/85315948/7d95684a-c76a-47e1-8891-1df456dd2af5)
 ***
+
+
+## Scalable Cloud Deployment on GCP
+### Internal Load Balancer for Starbucks API behind Kong API Gateway
+![image](https://github.com/luke510909/Starbucks/assets/85315948/3eb48567-e731-461d-82b7-905280253e90)
+  External Load Balancer as Ingress for Cashier's App 
+![image](https://github.com/luke510909/Starbucks/assets/85315948/af13a729-3b27-4f30-993b-6fa5b3f6c833)
+
 ## Cashier's App
 #### New login page, with user registration and support
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/2c756585-789b-4d6b-8723-d0672893061c)
@@ -64,8 +72,8 @@ which is processed by the server to generate dynamic content
 #### utilized the @Value annotation to inject values from environment variables such as docker compose or the deployment.yaml
 #### allows for specifying a placeholder expression that references a property value
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/0c87a6a1-7ee1-44bd-b5f4-6e659c739bd7)
-#### Rest client is not as is, removed hashmap implementation in replacement with lists, custom query methods to utilize spring jpa to automatically generate code, which allows for CRUD operations
-#### utilizes spring jpa for managing the starbucksorders, previously it was utilizing a hashmap
+#### Rest client has custom query methods to utilize spring jpa to automatically generate code, which allows for CRUD operations
+#### utilizes spring jpa for managing the starbucksorders, previously it was utilizing a hashmap which would not work with GKE
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/ec1e5be2-0b43-4678-b44a-36c1b793c3a1)
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/60b74789-d7f8-46a5-887d-edde70c1a1d6)
 
@@ -80,9 +88,6 @@ which is processed by the server to generate dynamic content
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/a9a46c4e-4166-4b7c-a0de-48f181470357)
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/d9ff86f4-1db6-4efc-afee-8c5882a30160)
 
-## Scalable Cloud Deployment on GCP
-### both External Load Balancer as Ingress for Cashier's App and Internal Load Balancer for Starbucks API behind Kong API Gateway
-![image](https://github.com/luke510909/Starbucks/assets/85315948/af13a729-3b27-4f30-993b-6fa5b3f6c833)
 
 ## Implementation Uses Required Cloud Databases
 ### MYsql 8.0 configuration
