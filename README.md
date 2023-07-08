@@ -1,14 +1,14 @@
 ## Starbucks Storefront Cloud Deployment Project
-### The Starbucks GKE Demo Project is a comprehensive system developed for Starbucks, showcasing various components and functionalities. It includes a Cashier's App for order processing, support for admin logins, in-store order management, scalable cloud deployment on Google Cloud Platform (GCP), integration with cloud databases, and a Starbucks API for mobile and store-front applications. The project highlights technologies like Spring MVC, MySQL, RabbitMQ, and Kong API Gateway. 
+### This project is simulating the Starbucks storefront, with a comprehensive system showcasing various components and functionalities. It includes a Cashier's App for order processing, support for admin logins, in-store order management, scalable cloud deployment on Google Cloud Platform (GCP), integration with cloud databases, and a Starbucks API for mobile and store-front applications. The project highlights technologies like Spring MVC, MySQL, RabbitMQ, and Kong API Gateway. 
 
 ***
-# Overall Architecture Diagram of your Cloud Deployment
+# Overall Architecture Diagram of the Cloud Deployment
+![image](https://github.com/luke510909/Starbucks/assets/85315948/7d95684a-c76a-47e1-8891-1df456dd2af5)
 ***
-# A section for each of the following discussing the features implemented with Screenshot "Demos" of the Feature
 ## Cashier's App
 #### New login page, with user registration and support
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/2c756585-789b-4d6b-8723-d0672893061c)
-#### retrieved from gumball 3.5 as reference, Used  in conjunction with spring mvc to handle user authentication and authorization. The th:action, th:placeholder, th:text, and th:if attributes are used to dynamically populate the form fields, button text, and display error messages.
+####  Used  in conjunction with spring mvc to handle user authentication and authorization. The th:action, th:placeholder, th:text, and th:if attributes are used to dynamically populate the form fields, button text, and display error messages.
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/86579c95-04e5-4922-aa11-6831dd2efb32)
 #### added additional dropdown menu from the initial only being a register, also added sign out button
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/2272b53b-3551-4de4-9000-6fe732ef0989)
@@ -55,14 +55,9 @@ It scales utilizing load balancing, which distributes incoming requests across m
 ***
 # Technical Requirements
 ## Cashier's App
-### Port Node.js App to Spring MVC (required)
-#### node js app is ported to spring mvc as you can see
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/ad04ea36-538e-4fe8-a056-ffcc8db93344)
-web rendereding is performed in resources/templates, utilizing thymeleaf, allows to write html templates with special attributes
+Web rendereding is performed in resources/templates, utilizing thymeleaf, allows to write html templates with special attributes
 which is processed by the server to generate dynamic content
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/9737e588-5372-4d5d-992b-6080b09aeca9)
-style sheet is stored in auth folder
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/dc94307f-9d2c-4ae6-b979-55794673f1d4)
 
 #### the cashiercontroller processes json responses from the api through the resourceurl, which passes it to the view
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/27f72f53-bb7e-4e14-a692-fa098c3ef015)
@@ -87,10 +82,7 @@ style sheet is stored in auth folder
 
 ## Scalable Cloud Deployment on GCP
 ### both External Load Balancer as Ingress for Cashier's App and Internal Load Balancer for Starbucks API behind Kong API Gateway
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/498b6f9b-2a7e-401c-889f-6f5502bf818b)
-### as you can see, the api matches the kong api gateway
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/fb946613-21f3-45a1-abd3-c4498b03f5d7)
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/de580ba5-b59f-40a7-97a0-f26a3cb196b3)
+![image](https://github.com/luke510909/Starbucks/assets/85315948/af13a729-3b27-4f30-993b-6fa5b3f6c833)
 
 ## Implementation Uses Required Cloud Databases
 ### MYsql 8.0 configuration
@@ -131,8 +123,8 @@ same endpoint ip to access the rabbitmq console
 ### Will need a Background Worker Job (i.e. Spring Scheduler) to pick up Orders and Make Drinks
 #### in starbucks cashier worker
 #### Responsible for processing Starbucks cashier orders using RabbitMQ for message queuing. Inside the method, it logs the order number as received. It then simulates busy work by sleeping for 60 seconds using Thread.sleep(). It then processes the order by updating its status to "FULFILLED" after simulating some busy work, and saves the updated order to the database.
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/818deff3-a5a5-4c8e-9b68-62df83dfae63)
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/fb2857f8-fc32-4018-a876-02630fd89835)
+![image](https://github.com/luke510909/Starbucks/assets/85315948/af560f3e-170a-4e5e-9ede-2cf1e9012a7f)
+
 #### once paid for order, as you can see cashier worker pod gets received worker
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/a073a41e-155b-4844-8e7b-4ae479f538b3)
 #### and as you can see in the timestamp, exactly after a minute it gets processed
