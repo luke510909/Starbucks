@@ -10,7 +10,7 @@
 ## Scalable Cloud Deployment on GCP
 ### Internal Load Balancer for Starbucks API behind Kong API Gateway
 ![image](https://github.com/luke510909/Starbucks/assets/85315948/3eb48567-e731-461d-82b7-905280253e90)
-  External Load Balancer as Ingress for Cashier's App 
+###  External Load Balancer as Ingress for Cashier's App 
 ![image](https://github.com/luke510909/Starbucks/assets/85315948/af13a729-3b27-4f30-993b-6fa5b3f6c833)
 
 ## Cashier's App
