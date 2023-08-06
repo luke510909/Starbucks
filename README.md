@@ -53,14 +53,13 @@
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/9645e7ed-7c9a-4f0d-9031-8d80ffd243f3)
 
 ###
-***
+
 ## Cloud Deployments
 ### Design Notes on GitHub an Architecture Diagram of the overall Deployment.
 ### How does your Solution Scale?  Can it handle > 1 Million Mobile Devices? Explain.
 
-It scales utilizing load balancing, which distributes incoming requests across multiple instances of the application. This helps handle potential high volume of traffic from a large number of devices. Since we are using Kubernetes, horizontal scaling is there which involves adding more instances, and pods to the ifrastructure to handle any demand. By doing this, we can accommadate a massive amount of devices by distrubuting the workload across multiple instances. Kong and Ingress enable efficient traffic routng and load balancing, and RabbitMQ workers facilitate asynchronous processing of tasks. Since we are using a combination of GKE, Kong, and ingress, I do believe its possible to handle over 1 million mobile devices.
-***
-***
+It scales utilizing load balancing, which distributes incoming requests across multiple instances of the application. This helps handle potential high volume of traffic from a large number of devices. Since we are using Kubernetes, horizontal scaling is there which involves adding more instances, and pods to the infrastructure to handle any demand. By doing this, we can accommadate a massive amount of devices by distributing the workload across multiple instances. Kong and Ingress enable efficient traffic routng and load balancing, and RabbitMQ workers facilitate asynchronous processing of tasks. Since we are using a combination of GKE, Kong, and ingress, I do believe its possible to handle over 1 million mobile devices.
+
 # Technical Requirements
 ## Cashier's App
 Web rendereding is performed in resources/templates, utilizing thymeleaf, allows to write html templates with special attributes
