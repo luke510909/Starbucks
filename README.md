@@ -13,35 +13,6 @@
 ###  External Load Balancer as Ingress for Cashier's App 
 ![image](https://github.com/luke510909/Starbucks/assets/85315948/af13a729-3b27-4f30-993b-6fa5b3f6c833)
 
-## Cashier's App
-#### New login page, with user registration and support
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/2c756585-789b-4d6b-8723-d0672893061c)
-####  Used  in conjunction with spring mvc to handle user authentication and authorization. The th:action, th:placeholder, th:text, and th:if attributes are used to dynamically populate the form fields, button text, and display error messages.
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/86579c95-04e5-4922-aa11-6831dd2efb32)
-#### added additional dropdown menu from the initial only being a register, also added sign out button
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/2272b53b-3551-4de4-9000-6fe732ef0989)
-### th:href="@{/styles.css}": This Thymeleaf attribute is used to link the CSS file, styles.css. The @{} syntax is used to link to the URL of the resource on the server.
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/ad400a2f-6b62-4526-8a23-1c56e0c09971)
-### th:action="@{/logout}" and th:action="@{/user/starbucks-cashier}": The th:action attribute is used to specify the logout action. When the form is submitted, a POST request is sent to the specified URL.
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/f383004d-9a1f-4066-b0b4-fcb351a08ef5)
-### referenced the way the register form field is generated to create the custom order fields
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/cdf2d4bd-d06d-433b-b642-ed0082091446)
-### information retrieval
-#### obtains order information through sending an api request to the specified button. Try and catch fields are added to every action to support any error handling
-### if action is place order, it performs a post request to the api
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/ac9c8b8d-1f3d-4ee6-98e5-5cf74c38e206)
-
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/cb84fec6-2c7e-4f45-b9b0-f0abee94b92d)
-### if action is get order, it performs an api get request
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/044059b1-811e-47e8-9af2-24a1d0543a75)
-
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/6bacbd20-6c3d-47c5-98d4-99d0ab52e7f4)
-
-### if action is clear order, it performs an api delete request
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/bbe34546-8711-4095-bc86-aaa85d6d9d71)
-
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/86ac2823-0470-458a-b9e0-f15e73082c94)
-
 #### 
 #### 
 ####
@@ -55,8 +26,8 @@
 ###
 
 ## Cloud Deployments
-### Design Notes on GitHub an Architecture Diagram of the overall Deployment.
-### How does your Solution Scale?  Can it handle > 1 Million Mobile Devices? Explain.
+
+### How does the deployment scale?  Can it handle > 1 Million Mobile Devices? Explain.
 
 It scales utilizing load balancing, which distributes incoming requests across multiple instances of the application. This helps handle potential high volume of traffic from a large number of devices. Since we are using Kubernetes, horizontal scaling is there which involves adding more instances, and pods to the infrastructure to handle any demand. By doing this, we can accommadate a massive amount of devices by distributing the workload across multiple instances. Kong and Ingress enable efficient traffic routng and load balancing, and RabbitMQ workers facilitate asynchronous processing of tasks. Since we are using a combination of GKE, Kong, and ingress, I do believe its possible to handle over 1 million mobile devices.
 
@@ -104,7 +75,7 @@ which is processed by the server to generate dynamic content
 same endpoint ip to access the rabbitmq console
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/18b52a5d-36ca-4ab9-8c57-20e1d2d7588d)
 
-### Extend the Starbucks API to support async order processing (to use RabbitMQ)
+### Extends the Starbucks API to support async order processing (to use RabbitMQ)
 ### utilizes the spring amqp interface, an open standard for passing business messages between applications or organizations.
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/96423d96-0913-4581-94fc-a0e991876931)
 ### creates a new queue named "cashier" if it doesn't already exist. This queue will then be used to send order information using rabbit.convertAndSend(queue.getName(), orderNumber);. The convertAndSend method will convert the orderNumber into a message and send it to the queue.
@@ -124,17 +95,11 @@ same endpoint ip to access the rabbitmq console
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/268de6be-3fc7-4f62-bc61-c9dc7c399c95)
 ![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/36277881-396f-4c68-acd9-3e984fbe1656)
 
-### Will need a Background Worker Job (i.e. Spring Scheduler) to pick up Orders and Make Drinks
-#### in starbucks cashier worker
+### Background Worker Job  to pick up Orders and Make Drinks
+
 #### Responsible for processing Starbucks cashier orders using RabbitMQ for message queuing. Inside the method, it logs the order number as received. It then simulates busy work by sleeping for 60 seconds using Thread.sleep(). It then processes the order by updating its status to "FULFILLED" after simulating some busy work, and saves the updated order to the database.
 ![image](https://github.com/luke510909/Starbucks/assets/85315948/af560f3e-170a-4e5e-9ede-2cf1e9012a7f)
 
-#### once paid for order, as you can see cashier worker pod gets received worker
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/a073a41e-155b-4844-8e7b-4ae479f538b3)
-#### and as you can see in the timestamp, exactly after a minute it gets processed
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/6430ae2c-b722-4ad6-b008-2a3162cc6e3f)
-### Background Worker should be a "Single Resilient POD" which auto restarts on crashes
-![image](https://github.com/nguyensjsu/cmpe172-luke510909/assets/85315948/d892a46e-897a-4fa6-ad73-e2e7fe621164)
 
 
 
