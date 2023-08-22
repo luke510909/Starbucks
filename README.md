@@ -1,12 +1,6 @@
 ## Starbucks Storefront Cloud Deployment Project
 ### This project is simulating the Starbucks storefront, with a comprehensive system showcasing various components and functionalities. It includes a Cashier's App for order processing, support for admin logins, in-store order management, scalable cloud deployment on Google Cloud Platform (GCP), integration with cloud databases, and a Starbucks API for mobile and store-front applications. The project highlights technologies like Spring MVC, MySQL, RabbitMQ, and Kong API Gateway. 
 
-***
-# Overall Architecture Diagram of the Cloud Deployment
-![image](https://github.com/luke510909/Starbucks/assets/85315948/7d95684a-c76a-47e1-8891-1df456dd2af5)
-***
-
-
 ## Scalable Cloud Deployment on GCP
 ### Internal Load Balancer for Starbucks API behind Kong API Gateway
 ![image](https://github.com/luke510909/Starbucks/assets/85315948/3eb48567-e731-461d-82b7-905280253e90)
